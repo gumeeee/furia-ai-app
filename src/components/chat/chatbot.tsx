@@ -8,6 +8,8 @@ import Image from "next/image";
 import WelcomeScreen from "./welcome-screen";
 import TypingIndicator from "./type-indicator";
 import { RippleButton } from "../magicui/ripple-button";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 interface Message {
   role: "user" | "assistant";
@@ -21,6 +23,11 @@ export default function ChatPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [currentTypingText, setCurrentTypingText] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const { data } = useSession();
+
+  if (!data?.user) {
+    redirect("/login");
+  }
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -152,7 +159,17 @@ export default function ChatPage() {
 
                 {message.role === "user" && (
                   <div className="shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-amber-500 to-yellow-500 flex items-center justify-center shadow-neon-gold-xs">
-                    <User size={16} className="text-black" />
+                    {data.user?.image ? (
+                      <Image
+                        src={data.user?.image!}
+                        className="rounded-full w-10 border-2 border-muted"
+                        alt="user"
+                        width={100}
+                        height={100}
+                      />
+                    ) : (
+                      <User size={16} className="text-black" />
+                    )}
                   </div>
                 )}
               </div>
