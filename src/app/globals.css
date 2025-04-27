@@ -41,6 +41,29 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --animate-aurora: aurora 8s ease-in-out infinite alternate;
+  @keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);
+    }
+  25% {
+    background-position: 50% 100%;
+    transform: rotate(5deg) scale(1.1);
+    }
+  50% {
+    background-position: 100% 50%;
+    transform: rotate(-3deg) scale(0.95);
+    }
+  75% {
+    background-position: 50% 0%;
+    transform: rotate(3deg) scale(1.05);
+    }
+  100% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);
+    }
+  }
 }
 
 :root {
@@ -119,4 +142,133 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes messageIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cursor {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-messageIn {
+  animation: messageIn 0.3s ease-out;
+}
+
+.animate-cursor {
+  animation: cursor 0.8s infinite;
+}
+
+.animate-pulse-delay-0 {
+  animation: pulse 1.5s infinite;
+}
+
+.animate-pulse-delay-1 {
+  animation: pulse 1.5s infinite 0.2s;
+}
+
+.animate-pulse-delay-2 {
+  animation: pulse 1.5s infinite 0.4s;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thumb-gold::-webkit-scrollbar-thumb {
+  background-color: var(--gold);
+  border-radius: 2px;
+}
+
+.scrollbar-track-zinc-900::-webkit-scrollbar-track {
+  background-color: var(--zinc-900);
+}
+
+.group:hover .group-hover\:-translate-x-1 {
+  transform: translateX(-4px);
+}
+
+.group-hover\:-translate-x-1 {
+  transition: transform 0.3s ease;
+}
+
+.shadow-neon-gold {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.2);
+}
+
+.shadow-neon-gold-sm {
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+.shadow-neon-gold-xs {
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+.shadow-inner-gold {
+  box-shadow: inset 0 0 5px rgba(255, 215, 0, 0.1);
+}
+
+.neon-text-gold {
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.exit-animation {
+  opacity: 0;
+  transform: translateY(-30px);
+  filter: blur(8px);
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 1s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 1s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  will-change: opacity, transform, filter;
+}
+
+.enter-animation {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 1s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 1s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  will-change: opacity, transform, filter;
 }

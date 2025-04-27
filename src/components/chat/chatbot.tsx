@@ -91,11 +91,11 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-zinc-950 via-slate-950 to-black">
+    <div className="flex flex-col items-center justify-center pt-8 min-h-screen bg-gradient-to-br from-zinc-900 via-gray-950 to-black">
       {showWelcome ? (
         <WelcomeScreen onStartChat={handleStartChat} />
       ) : (
-        <div className="flex flex-col w-full max-w-3xl h-[85vh] mx-auto rounded-xl overflow-hidden border border-gold/20 shadow-neon-gold">
+        <div className="flex flex-col w-full sm:max-w-xl md:max-w-5xl h-[85vh] mx-auto rounded-xl overflow-hidden border border-gold/20 shadow-neon-gold-sm">
           <div className="bg-black/90 border-b border-gold/20 p-3 flex items-center">
             <button
               onClick={handleBackToWelcome}
@@ -107,7 +107,7 @@ export default function ChatPage() {
               />
               <span>Voltar</span>
             </button>
-            <h2 className="text-gold/90 text-lg font-medium mx-auto flex items-center gap-2">
+            <h2 className="text-gold/90 text-lg font-medium mx-auto flex items-center gap-4">
               <Image
                 src="/furia-logo.png"
                 width={24}
@@ -115,7 +115,7 @@ export default function ChatPage() {
                 alt="Furia Logo"
                 className="w-5 h-5"
               />
-              FURIA AI Chat
+              Chat
             </h2>
           </div>
 
