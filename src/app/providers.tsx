@@ -14,6 +14,9 @@ import {
   NavItems,
 } from "@/components/ui/resizable-navbar";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
+import { UserIcon } from "lucide-react";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const navItems = [
@@ -28,6 +31,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { data } = useSession();
 
   return (
     <>
@@ -36,8 +40,31 @@ export default function Providers({ children }: { children: React.ReactNode }) {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="secondary">Login</NavbarButton>
-            <NavbarButton variant="primary">Book a call</NavbarButton>
+            {!data?.user ? (
+              <NavbarButton href="/login" variant="secondary">
+                Login
+              </NavbarButton>
+            ) : (
+              <>
+                {data.user?.image ? (
+                  <Image
+                    src={data.user?.image!}
+                    className="rounded-full w-10 border-2 border-muted"
+                    alt="user"
+                    width={100}
+                    height={100}
+                  />
+                ) : (
+                  <UserIcon />
+                )}
+                <NavbarButton
+                  onClick={() => signOut({ redirectTo: "/" })}
+                  variant="primary"
+                >
+                  Sair
+                </NavbarButton>
+              </>
+            )}
           </div>
         </NavBody>
 
@@ -66,20 +93,27 @@ export default function Providers({ children }: { children: React.ReactNode }) {
               </Link>
             ))}
             <div className="flex w-full flex-col gap-4">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Login
-              </NavbarButton>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Book a call
-              </NavbarButton>
+              {!data?.user ? (
+                <NavbarButton
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  href="/login"
+                  variant="primary"
+                  className="w-full"
+                >
+                  Login
+                </NavbarButton>
+              ) : (
+                <NavbarButton
+                  onClick={() => {
+                    signOut();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  variant="primary"
+                  className="w-full"
+                >
+                  Sair
+                </NavbarButton>
+              )}
             </div>
           </MobileNavMenu>
         </MobileNav>

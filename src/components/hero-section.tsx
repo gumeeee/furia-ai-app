@@ -2,8 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, SendHorizonal } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-
+import { TextAnimate } from "./magicui/text-animate";
 
 export default function HeroSection() {
   return (
@@ -14,25 +13,35 @@ export default function HeroSection() {
             <div className="lg:flex lg:items-center lg:gap-12">
               <div className="relative z-10 mx-auto max-w-xl text-center lg:ml-0 lg:w-1/2 lg:text-left">
                 <Link
-                  href="/"
+                  href="/chat"
                   className="rounded-(--radius) mx-auto flex w-fit items-center gap-2 border p-1 pr-3 lg:ml-0"
                 >
                   <span className="bg-muted rounded-[calc(var(--radius)-0.25rem)] px-2 py-1 text-xs">
-                    New
+                    Novo
                   </span>
-                  <span className="text-sm">Introduction Tailark Html</span>
+                  <span className="text-sm">
+                    Teste já o nosso chat com o FURIA AI
+                  </span>
                   <span className="bg-(--color-border) block h-4 w-px"></span>
 
                   <ArrowRight className="size-4" />
                 </Link>
 
-                <h1 className="mt-10 text-balance text-4xl font-bold md:text-5xl xl:text-5xl">
-                  Production Ready Digital Marketing blocks
+                <h1 className="mt-10 text-balance text-3xl font-bold md:text-4xl">
+                  <TextAnimate animation="blurInUp" by="character" once>
+                    FURIA AI, Seu Guia para o Mundo dos FURIOSOS!
+                  </TextAnimate>
                 </h1>
-                <p className="mt-8">
-                  Error totam sit illum. Voluptas doloribus asperiores quaerat
-                  aperiam. Quidem harum omnis beatae ipsum soluta!
-                </p>
+                <TextAnimate
+                  className="mt-8 text-balance"
+                  animation="blurInUp"
+                  by="character"
+                  once
+                >
+                  Conheça o nosso assistente virtual, que traz novidades e
+                  informações sobre a FURIA no mundo do eSports, seus jogadores,
+                  equipe e tudo mais sobre essa lenda do eSports.
+                </TextAnimate>
 
                 <div>
                   <form
@@ -43,7 +52,7 @@ export default function HeroSection() {
                       <Mail className="text-caption pointer-events-none absolute inset-y-0 left-5 my-auto size-5" />
 
                       <input
-                        placeholder="Your mail address"
+                        placeholder="Seu email para novos Updates"
                         className="h-14 w-full bg-transparent pl-12 focus:outline-none"
                         type="email"
                       />
@@ -53,9 +62,8 @@ export default function HeroSection() {
                           aria-label="submit"
                           className="rounded-(--radius)"
                         >
-                          <span className="hidden md:block">Get Started</span>
                           <SendHorizonal
-                            className="relative mx-auto size-5 md:hidden"
+                            className="relative mx-auto size-5"
                             strokeWidth={2}
                           />
                         </Button>
@@ -64,9 +72,10 @@ export default function HeroSection() {
                   </form>
 
                   <ul className="list-inside list-disc space-y-2">
-                    <li>Faster</li>
-                    <li>Modern</li>
-                    <li>100% Customizable</li>
+                    <li>Rápido</li>
+                    <li>Moderno</li>
+                    <li>Inovador</li>
+                    <li>Interativo</li>
                   </ul>
                 </div>
               </div>

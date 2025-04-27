@@ -2,13 +2,12 @@
 import { cn } from "@/lib/utils";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 import {
-  motion,
   AnimatePresence,
-  useScroll,
+  motion,
   useMotionValueEvent,
+  useScroll,
 } from "motion/react";
 import Image from "next/image";
-import Link from "next/link";
 
 import React, { useRef, useState } from "react";
 import TransitionLink from "../transition-link";
