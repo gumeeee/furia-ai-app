@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, SendHorizonal } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { TextAnimate } from "./magicui/text-animate";
+import HeroText from "./hero-text";
 
 export default function HeroSection() {
   return (
@@ -27,21 +27,7 @@ export default function HeroSection() {
                   <ArrowRight className="size-4" />
                 </Link>
 
-                <h1 className="mt-10 text-balance text-3xl font-bold md:text-4xl">
-                  <TextAnimate animation="blurInUp" by="character" once>
-                    FURIA AI, Seu Guia para o Mundo dos FURIOSOS!
-                  </TextAnimate>
-                </h1>
-                <TextAnimate
-                  className="mt-8 text-balance"
-                  animation="blurInUp"
-                  by="character"
-                  once
-                >
-                  Conheça o nosso assistente virtual, que traz novidades e
-                  informações sobre a FURIA no mundo do eSports, seus jogadores,
-                  equipe e tudo mais sobre essa lenda do eSports.
-                </TextAnimate>
+                <HeroText />
 
                 <div>
                   <form
