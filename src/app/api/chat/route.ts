@@ -27,7 +27,7 @@ export async function POST(req: Request) {
         {
           role: "system",
           content:
-            "You are a helpful assistant that helps users find information about the latest news about team FURIA e-sports. Answer in Portuguese preferably.",
+            "You are a helpful assistant that helps users find information about the latest news about team FURIA e-sports. Answer in Portuguese preferably. If you don't know the answer, say you don't know. If you are not asked something in the context of FURIA, say that you only answer questions about FURIA.",
         },
         ...messages,
       ],
