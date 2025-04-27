@@ -7,6 +7,7 @@ import { Send, ArrowLeft, User } from "lucide-react";
 import Image from "next/image";
 import WelcomeScreen from "./welcome-screen";
 import TypingIndicator from "./type-indicator";
+import { RippleButton } from "../magicui/ripple-button";
 
 interface Message {
   role: "user" | "assistant";
@@ -205,13 +206,14 @@ export default function ChatPage() {
                 className="flex-1 bg-zinc-900/70 text-white border border-gold/30 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gold/50 shadow-inner-gold"
                 disabled={isLoading}
               />
-              <button
+              <RippleButton
                 type="submit"
                 disabled={isLoading}
-                className="bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-black rounded-full p-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold shadow-neon-gold-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                rippleColor="#ADD8E6"
+                className="disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send size={20} />
-              </button>
+              </RippleButton>
             </form>
           </div>
         </div>
