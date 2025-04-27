@@ -10,6 +10,7 @@ import TypingIndicator from "./type-indicator";
 import { RippleButton } from "../magicui/ripple-button";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import MarkdownMessage from "./markdown-message";
 
 interface Message {
   role: "user" | "assistant";
@@ -128,6 +129,26 @@ export default function ChatPage() {
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-gold scrollbar-track-zinc-900">
+            {messages.length === 0 && (
+              <div className="flex flex-col items-center justify-center h-full text-center text-zinc-500">
+                <div className="w-16 h-16 mb-4 relative opacity-50">
+                  <Image
+                    src="/furia-logo.png"
+                    fill
+                    alt="FURIA Logo"
+                    className="object-contain"
+                  />
+                </div>
+                <p className="text-lg font-medium mb-2">
+                  Como posso ajudar você hoje?
+                </p>
+                <p className="text-sm max-w-md">
+                  Faça perguntas sobre a FURIA Esports, seus jogadores,
+                  competições ou qualquer outro assunto.
+                </p>
+              </div>
+            )}
+
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -154,18 +175,22 @@ export default function ChatPage() {
                       : "bg-zinc-900/90 backdrop-blur-sm text-white border border-gold/10 shadow-neon-gold-sm rounded-tl-none"
                   }`}
                 >
-                  <p>{message.content}</p>
+                  {message.role === "user" ? (
+                    <p className="whitespace-pre-wrap">{message.content}</p>
+                  ) : (
+                    <MarkdownMessage content={message.content} />
+                  )}
                 </div>
 
                 {message.role === "user" && (
-                  <div className="shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-amber-500 to-yellow-500 flex items-center justify-center shadow-neon-gold-xs">
+                  <div className="shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-amber-500 to-yellow-500 flex items-center justify-center shadow-neon-gold-xs overflow-hidden">
                     {data.user?.image ? (
                       <Image
-                        src={data.user?.image!}
-                        className="rounded-full w-10 border-2 border-muted"
+                        src={data.user?.image || "/placeholder.svg"}
+                        className="w-full h-full object-cover"
                         alt="user"
-                        width={100}
-                        height={100}
+                        width={32}
+                        height={32}
                       />
                     ) : (
                       <User size={16} className="text-black" />
@@ -204,7 +229,7 @@ export default function ChatPage() {
                   />
                 </div>
                 <div className="bg-zinc-900/90 backdrop-blur-sm text-white rounded-2xl rounded-tl-none p-3 max-w-[80%] border border-gold/10 shadow-neon-gold-sm">
-                  {currentTypingText}
+                  <MarkdownMessage content={currentTypingText} />
                   <span className="inline-block w-2 h-4 ml-1 bg-gold animate-cursor"></span>
                 </div>
               </div>
