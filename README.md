@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Furia AI
 
-## Getting Started
+![Furia AI](/public/project-image.png)
 
-First, run the development server:
+Furia AI é um chatbot para fornecer noticias e informações tudo somente sobre a FURIA
+
+## ✨ Funcionalidades
+
+- **Landing Page**  
+  Landing Page elegante e funcional.
+- **Chat bot**  
+  Chat bot integrado com API do Deepseek.
+
+## 🛠️ Tecnologias
+
+- **Next.js 15** (App Router, Server Actions, RSC, Route Handler)
+- **shadcn/ui** (Componentes UI com Radix + Tailwind CSS)
+- **Auth.js** (Autenticação com NextAuth) [Configuração Auth Github e Google](https://next-auth.js.org/getting-started/introduction)
+- **TypeScript** (Tipagem estática)
+
+## 🚀 Começando
+
+### Pré-requisitos
+- Node.js 18+
+- [pnpm](https://pnpm.io/installation) (opcional, mas recomendado)
+
+### 📦 Instalação de Dependências
+<details> <summary><b>Com pnpm (recomendado)
+</b>
+</summary>
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+```
+</details>
+
+<details> <summary><b>Com npm
+</b>
+</summary>
+
+```bash
+npm install
+```
+</details>
+
+<details> <summary><b>Com yarn
+</b>
+</summary>
+
+```bash
+yarn install
+```
+</details>
+
+### Clonando Repositório
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/gumeeee/furia-ai.git
+cd furia-ai-app
+code .
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🔐 Configuração das variaveis de ambiente
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<details> <summary><b>Preencha o .env.local com suas credenciais:
+</b>
+</summary>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+DEEPSEEK_API_KEY=sua-chave-api-deepseek
+AUTH_GOOGLE_ID=sua-chave-publica-google-app
+AUTH_GOOGLE_SECRET=sua-chave-google-secreta
+AUTH_GITHUB_ID=sua-chave-publica-github-app
+AUTH_GITHUB_SECRET=sua-chave-github-secreta
+AUTH_SECRET=secret-gerado
+```
+</details>
 
-## Learn More
+<br>
 
-To learn more about Next.js, take a look at the following resources:
+2. Clone o repositório:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🖥️ Iniciando o Servidor
 
-## Deploy on Vercel
+<details> <summary><b>
+</b>
+</summary>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Com pnpm
+pnpm dev
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Com npm
+npm run dev
+
+# Com Yarn
+yarn dev
+```
+</details>
